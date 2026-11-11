@@ -7,7 +7,7 @@
   
   <!-- SEO Meta Tags -->
   <meta name="description" content="Track daily expenses, manage income, and organize personal budgets securely with Nexus Expense Tracker. 100% client-side privacy.">
-  <meta name="keywords" content="Nexus Expense, expense tracker, budget calculator, local budget manager, privacy first finance tool">
+  <meta name="keywords" content="Nexus Expense, expense tracker, budget calculator, local budget manager">
   <link rel="canonical" href="https://expense.nexusglobalit.org/">
 
   <!-- Tailwind CSS CDN -->
@@ -27,10 +27,10 @@
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-blue-600 selection:text-white">
 
-  <!-- Top Clean Corporate Navigation Bar (Matching Main Site) -->
+  <!-- Clean Minimal Header (Only Home Link) -->
   <nav class="border-b border-slate-200 bg-white fixed w-full z-50 top-0 shadow-xs">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center space-x-12">
+      <div class="flex items-center space-x-3">
         <a href="https://www.nexusglobalit.org/" class="flex flex-col justify-center group">
           <span class="text-xl font-bold tracking-tight text-slate-900 leading-none">
             Nexus <span class="text-emerald-600">Expense</span>
@@ -39,23 +39,14 @@
             Information Technology
           </span>
         </a>
-
-        <!-- Main Cross-Domain Navigation Links -->
-        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-          <a href="https://www.nexusglobalit.org/#ecosystem" class="hover:text-blue-600 hover:underline underline-offset-8 transition">Products & Apps</a>
-          <a href="https://calc.nexusglobalit.org/" target="_blank" class="hover:text-blue-600 hover:underline underline-offset-8 transition">Calculators Hub</a>
-          <a href="https://tools.nexusglobalit.org" target="_blank" class="hover:text-blue-600 hover:underline underline-offset-8 transition">Tools Hub</a>
-          <a href="https://www.nexusglobalit.org/#about" class="hover:text-blue-600 hover:underline underline-offset-8 transition">About Us</a>
-          <a href="https://www.nexusglobalit.org/#contact" class="hover:text-blue-600 hover:underline underline-offset-8 transition">Contact Us</a>
-        </div>
       </div>
 
       <div class="flex items-center space-x-4">
         <span class="hidden sm:inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-          <i class="fa-solid fa-lock text-[10px] mr-1.5"></i> 100% Client-Side Privacy
+          <i class="fa-solid fa-lock text-[10px] mr-1.5"></i> 100% Private
         </span>
-        <a href="https://calc.nexusglobalit.org/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2.5 rounded transition">
-          Launch Calculators <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+        <a href="https://www.nexusglobalit.org/" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded transition">
+          <i class="fa-solid fa-house mr-1.5"></i> Main Home
         </a>
       </div>
     </div>
@@ -210,18 +201,13 @@
     </div>
   </div>
 
-  <!-- Professional Footer -->
-  <footer class="bg-[#f2f2f2] text-slate-600 text-xs py-10 px-6 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center space-x-4">
-        <span>&copy; 2026 Nexus Global Information Technology</span>
-      </div>
-      <div class="flex flex-wrap gap-6 text-slate-600 font-medium">
+  <!-- Minimal Clean Footer -->
+  <footer class="bg-[#f2f2f2] text-slate-600 text-xs py-8 px-6 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>&copy; 2026 Nexus Expense. All rights reserved.</span>
+      <div class="flex space-x-6">
         <a href="https://www.nexusglobalit.org/" class="hover:underline">Main Home</a>
-        <a href="https://calc.nexusglobalit.org/" target="_blank" class="hover:underline">Calculators Suite</a>
-        <a href="https://tools.nexusglobalit.org/#counter" target="_blank" class="hover:underline">Word Counter</a>
-        <a href="https://tools.nexusglobalit.org/#password" target="_blank" class="hover:underline">Password Generator</a>
-        <a href="https://www.nexusglobalit.org/#about" class="hover:underline">About Us</a>
+        <button onclick="togglePrivacyModal()" class="hover:underline">Privacy Policy</button>
       </div>
     </div>
   </footer>
@@ -261,7 +247,6 @@
             categoryTotals[tx.category] += amountNum;
           }
 
-          // Render Item List
           const li = document.createElement('li');
           li.className = `flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-200 text-sm`;
           li.innerHTML = `
@@ -284,7 +269,6 @@
           listEl.appendChild(li);
         });
 
-        // Render Category Totals
         const categories = Object.keys(categoryTotals);
         if (categories.length === 0) {
           categoryTotalsEl.innerHTML = '<p class="text-xs text-slate-400 col-span-full py-2">No expense categories recorded yet.</p>';
@@ -342,7 +326,6 @@
       modal.classList.toggle('hidden');
     }
 
-    // Initialize UI
     updateUI();
   </script>
 </body>
