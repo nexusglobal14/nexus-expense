@@ -1,332 +1,102 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus Expense | Private Budget & Expense Tracker</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Track daily expenses, manage income, and organize personal budgets securely with Nexus Expense Tracker. 100% client-side privacy.">
-  <meta name="keywords" content="Nexus Expense, expense tracker, budget calculator, local budget manager">
-  <link rel="canonical" href="https://expense.nexusglobalit.org/">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome Icons CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Expense Tracker & Budget Manager - Private, No Sign-up | Nexus Expense</title>
+<meta name="description" content="Track income and expenses by category with a free private budget tracker. Data stays in your browser. No account, no upload. Export to CSV.">
+<link rel="canonical" href="https://expense.nexusglobalit.org/">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Nexus Expense"><meta property="og:title" content="Free Expense Tracker & Budget Manager - Private, No Sign-up | Nexus Expense"><meta property="og:description" content="Track income and expenses by category with a free private budget tracker. Data stays in your browser. No account, no upload. Export to CSV."><meta property="og:url" content="https://expense.nexusglobalit.org/"><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Nexus Expense", "url": "https://expense.nexusglobalit.org/", "description": "Free private expense tracker and budget manager that stores data only in your browser.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (web browser)", "browserRequirements": "Requires JavaScript and local storage", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Nexus Global Information Technology", "url": "https://www.nexusglobalit.org/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is my financial data uploaded anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Transactions are saved only in your browser's local storage on your own device. Nexus Expense has no server database for your entries."}}, {"@type": "Question", "name": "Will I lose my data if I clear my browser?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Clearing site data, using private browsing or switching browsers or devices means your saved entries will not be there. Use the Export CSV button to keep a backup."}}, {"@type": "Question", "name": "Can I use it on my phone and my computer?", "acceptedAnswer": {"@type": "Answer", "text": "The tracker works on both, but each browser keeps its own separate data. Entries do not sync between devices."}}, {"@type": "Question", "name": "Can I change the currency?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Pick a currency symbol from the menu above the totals. It changes how amounts are displayed and is remembered in your browser."}}, {"@type": "Question", "name": "Is it really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. There is no account, subscription or paywall."}}]}]</script>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-blue-600 selection:text-white">
-
-  <!-- Clean Minimal Header (Only Home Link) -->
-  <nav class="border-b border-slate-200 bg-white fixed w-full z-50 top-0 shadow-xs">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <a href="https://www.nexusglobalit.org/" class="flex flex-col justify-center group">
-          <span class="text-xl font-bold tracking-tight text-slate-900 leading-none">
-            Nexus <span class="text-emerald-600">Expense</span>
-          </span>
-          <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mt-1">
-            Information Technology
-          </span>
-        </a>
-      </div>
-
-      <div class="flex items-center space-x-4">
-        <span class="hidden sm:inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-          <i class="fa-solid fa-lock text-[10px] mr-1.5"></i> 100% Private
-        </span>
-        <a href="https://www.nexusglobalit.org/" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded transition">
-          <i class="fa-solid fa-house mr-1.5"></i> Main Home
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Header Section -->
-  <section class="pt-28 pb-6 px-6 bg-white border-b border-slate-200">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <div>
-        <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded">Financial Security App</span>
-        <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Smart Expense Tracker & Budget Manager</h1>
-        <p class="text-slate-600 text-sm mt-1">Keep track of your daily expenses, monthly income, and category distributions locally.</p>
-      </div>
-      <button onclick="togglePrivacyModal()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-4 py-2 rounded border border-slate-300 transition flex items-center">
-        <i class="fa-solid fa-shield-halved text-emerald-600 mr-2"></i> Privacy Policy & Data Storage
-      </button>
-    </div>
-  </section>
-
-  <!-- Main App Container -->
-  <main class="max-w-7xl mx-auto px-6 py-8 flex-grow w-full space-y-6">
-    
-    <!-- Financial Overview Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs">
-        <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Total Balance</span>
-        <span id="balance-amount" class="text-3xl font-bold text-slate-900 mt-2 block">$0.00</span>
-      </div>
-      <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs">
-        <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Total Income</span>
-        <span id="income-amount" class="text-3xl font-bold text-emerald-600 mt-2 block">+$0.00</span>
-      </div>
-      <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs">
-        <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Total Expenses</span>
-        <span id="expense-amount" class="text-3xl font-bold text-rose-600 mt-2 block">-$0.00</span>
-      </div>
-    </div>
-
-    <!-- Main App Content Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      
-      <!-- Form Column -->
-      <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs space-y-4 h-fit">
-        <h2 class="text-base font-bold text-slate-900 flex items-center space-x-2 border-b border-slate-100 pb-3">
-          <i class="fa-solid fa-circle-plus text-emerald-600"></i>
-          <span>Add New Transaction</span>
-        </h2>
-        
-        <form id="transaction-form" onsubmit="addTransaction(event)" class="space-y-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Description / Title</label>
-            <input type="text" id="tx-title" required placeholder="e.g. Household Grocery" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-emerald-600">
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Amount</label>
-            <input type="number" step="0.01" id="tx-amount" required placeholder="e.g. 1500" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-emerald-600">
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Transaction Type</label>
-            <select id="tx-type" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-emerald-600">
-              <option value="expense">Expense (-)</option>
-              <option value="income">Income (+)</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Category</label>
-            <select id="tx-category" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-emerald-600">
-              <option value="Grocery">Grocery</option>
-              <option value="Petrol">Petrol / Fuel</option>
-              <option value="Milk">Milk</option>
-              <option value="Bills">Bills & Utilities</option>
-              <option value="Salary">Salary</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg text-sm transition shadow-sm">
-            Add Transaction
-          </button>
-        </form>
-      </div>
-
-      <!-- History & Category Summary Column -->
-      <div class="lg:col-span-2 space-y-6">
-        
-        <!-- Category-wise Totals Summary -->
-        <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs space-y-3">
-          <h2 class="text-sm font-bold text-slate-900 flex items-center space-x-2 border-b border-slate-100 pb-3">
-            <i class="fa-solid fa-chart-pie text-emerald-600"></i>
-            <span>Category-wise Expenses</span>
-          </h2>
-          <div id="category-totals-list" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <!-- Injected via JS -->
-          </div>
-        </div>
-
-        <!-- Recent Transactions List -->
-        <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h2 class="text-base font-bold text-slate-900 flex items-center space-x-2">
-              <i class="fa-solid fa-list-check text-blue-600"></i>
-              <span>Recent Transactions</span>
-            </h2>
-            <button onclick="clearAllData()" class="text-xs text-rose-600 hover:underline font-semibold">Clear All Data</button>
-          </div>
-
-          <ul id="transaction-list" class="space-y-2 max-h-80 overflow-y-auto pr-1">
-            <!-- Injected via JS -->
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-  </main>
-
-  <!-- Privacy Policy Guarantee Banner -->
-  <section class="bg-slate-100 border-t border-slate-200 py-6 px-6 text-xs text-slate-600">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center space-x-3">
-        <i class="fa-solid fa-user-shield text-emerald-600 text-xl"></i>
-        <div>
-          <h4 class="font-bold text-slate-800 text-sm">Your Data Remains 100% Private</h4>
-          <p>All expense logs and amounts stay stored inside your browser's local storage. Zero financial data is ever sent to any remote server.</p>
-        </div>
-      </div>
-      <button onclick="togglePrivacyModal()" class="text-blue-600 hover:underline font-semibold shrink-0">Read Privacy Guarantee →</button>
-    </div>
-  </section>
-
-  <!-- Privacy Policy Popup Modal -->
-  <div id="privacy-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-xl border border-slate-200 max-w-lg w-full p-6 space-y-4 shadow-xl">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h3 class="font-bold text-slate-900 text-lg flex items-center">
-          <i class="fa-solid fa-lock text-emerald-600 mr-2"></i> User Privacy Guarantee
-        </h3>
-        <button onclick="togglePrivacyModal()" class="text-slate-400 hover:text-slate-600 text-lg">&times;</button>
-      </div>
-      <div class="space-y-3 text-xs text-slate-600 leading-relaxed">
-        <p><strong class="text-slate-800">1. Local Device Storage:</strong> Nexus Expense operates strictly using Client-Side Execution. All income records, descriptions, and category totals are saved in your browser's <code class="bg-slate-100 px-1 py-0.5 rounded">localStorage</code>.</p>
-        <p><strong class="text-slate-800">2. No Server Transfers:</strong> We do not operate external databases for financial entries. No third party or server can access your saved transactions.</p>
-        <p><strong class="text-slate-800">3. Total Control:</strong> You can wipe out all saved data instantly at any time using the "Clear All Data" button in the application.</p>
-      </div>
-      <div class="pt-2 text-right">
-        <button onclick="togglePrivacyModal()" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded text-xs">Got it, close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Minimal Clean Footer -->
-  <footer class="bg-[#f2f2f2] text-slate-600 text-xs py-8 px-6 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span>&copy; 2026 Nexus Expense. All rights reserved.</span>
-      <div class="flex space-x-6">
-        <a href="https://www.nexusglobalit.org/" class="hover:underline">Main Home</a>
-        <button onclick="togglePrivacyModal()" class="hover:underline">Privacy Policy</button>
-      </div>
-    </div>
-  </footer>
-
-  <!-- App Script Implementation -->
-  <script>
-    let transactions = JSON.parse(localStorage.getItem('my_transactions')) || [];
-
-    function updateUI() {
-      const listEl = document.getElementById('transaction-list');
-      const categoryTotalsEl = document.getElementById('category-totals-list');
-      const balanceEl = document.getElementById('balance-amount');
-      const incomeEl = document.getElementById('income-amount');
-      const expenseEl = document.getElementById('expense-amount');
-
-      listEl.innerHTML = '';
-      categoryTotalsEl.innerHTML = '';
-
-      let totalIncome = 0;
-      let totalExpense = 0;
-      let categoryTotals = {};
-
-      if (transactions.length === 0) {
-        listEl.innerHTML = '<p class="text-xs text-slate-400 text-center py-6">No transactions recorded yet.</p>';
-        categoryTotalsEl.innerHTML = '<p class="text-xs text-slate-400 col-span-full py-2">No category data available.</p>';
-      } else {
-        transactions.forEach((tx, index) => {
-          const amountNum = parseFloat(tx.amount);
-          
-          if (tx.type === 'income') {
-            totalIncome += amountNum;
-          } else {
-            totalExpense += amountNum;
-            if (!categoryTotals[tx.category]) {
-              categoryTotals[tx.category] = 0;
-            }
-            categoryTotals[tx.category] += amountNum;
-          }
-
-          const li = document.createElement('li');
-          li.className = `flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-200 text-sm`;
-          li.innerHTML = `
-            <div class="flex items-center space-x-3">
-              <span class="w-2.5 h-2.5 rounded-full ${tx.type === 'income' ? 'bg-emerald-500' : 'bg-rose-500'}"></span>
-              <div>
-                <p class="font-semibold text-slate-800 text-xs sm:text-sm">${tx.title}</p>
-                <span class="text-[10px] bg-slate-200 text-slate-600 px-2 py-0.5 rounded">${tx.category}</span>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <span class="font-mono font-bold ${tx.type === 'income' ? 'text-emerald-600' : 'text-rose-600'}">
-                ${tx.type === 'income' ? '+' : '-'}$${amountNum.toFixed(2)}
-              </span>
-              <button onclick="deleteTransaction(${index})" class="text-slate-400 hover:text-rose-600 text-xs transition">
-                <i class="fa-solid fa-trash"></i>
-              </button>
-            </div>
-          `;
-          listEl.appendChild(li);
-        });
-
-        const categories = Object.keys(categoryTotals);
-        if (categories.length === 0) {
-          categoryTotalsEl.innerHTML = '<p class="text-xs text-slate-400 col-span-full py-2">No expense categories recorded yet.</p>';
-        } else {
-          categories.forEach(cat => {
-            const catCard = document.createElement('div');
-            catCard.className = 'bg-slate-50 border border-slate-200 p-3 rounded-lg';
-            catCard.innerHTML = `
-              <span class="text-[11px] text-slate-500 block font-semibold">${cat}</span>
-              <span class="text-base font-bold text-rose-600 mt-0.5 block">$${categoryTotals[cat].toFixed(2)}</span>
-            `;
-            categoryTotalsEl.appendChild(catCard);
-          });
-        }
-      }
-
-      const netBalance = totalIncome - totalExpense;
-      balanceEl.innerText = `$${netBalance.toFixed(2)}`;
-      incomeEl.innerText = `+$${totalIncome.toFixed(2)}`;
-      expenseEl.innerText = `-$${totalExpense.toFixed(2)}`;
-
-      localStorage.setItem('my_transactions', JSON.stringify(transactions));
-    }
-
-    function addTransaction(e) {
-      e.preventDefault();
-      const title = document.getElementById('tx-title').value.trim();
-      const amount = document.getElementById('tx-amount').value;
-      const type = document.getElementById('tx-type').value;
-      const category = document.getElementById('tx-category').value;
-
-      if (!title || !amount) return;
-
-      transactions.unshift({ title, amount, type, category });
-      updateUI();
-
-      document.getElementById('tx-title').value = '';
-      document.getElementById('tx-amount').value = '';
-    }
-
-    function deleteTransaction(index) {
-      transactions.splice(index, 1);
-      updateUI();
-    }
-
-    function clearAllData() {
-      if (confirm('Are you sure you want to wipe out all stored transaction records?')) {
-        transactions = [];
-        updateUI();
-      }
-    }
-
-    function togglePrivacyModal() {
-      const modal = document.getElementById('privacy-modal');
-      modal.classList.toggle('hidden');
-    }
-
-    updateUI();
-  </script>
-</body>
-</html>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+<nav class="border-b border-slate-200 bg-white sticky top-0 z-50"><div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<a href="/" class="flex flex-col justify-center"><span class="text-xl font-bold tracking-tight text-slate-900 leading-none">Nexus <span class="text-emerald-600">Expense</span></span><span class="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mt-1">Information Technology</span></a>
+<div class="flex items-center gap-5 text-xs font-semibold text-slate-600">
+<a class="hidden sm:inline hover:text-emerald-700" href="/how-to-track-expenses/">Guides</a><a class="hidden sm:inline hover:text-emerald-700" href="/about/">About</a><a class="hidden sm:inline hover:text-emerald-700" href="/privacy-policy/">Privacy</a>
+<a href="https://www.nexusglobalit.org/" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded">Main Site</a></div></div></nav>
+<section class="py-8 px-6 bg-white border-b border-slate-200"><div class="max-w-7xl mx-auto">
+<span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded">100% private &middot; stored in your browser</span>
+<h1 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Free Expense Tracker &amp; Budget Manager</h1>
+<p class="text-slate-600 text-sm mt-1">Record income and expenses, see your balance and category totals instantly, and export your data. No account needed.</p></div></section>
+<main class="max-w-7xl mx-auto px-6 py-8 flex-grow w-full space-y-8">
+<div class="flex items-center justify-end gap-2 text-xs"><label for="currency" class="font-semibold text-slate-700">Currency</label><select id="currency" class="border border-slate-300 rounded px-2 py-1 bg-white"><option value="$">USD ($)</option><option value="Rs ">PKR (Rs)</option><option value="€">EUR (€)</option><option value="£">GBP (£)</option><option value="AED ">AED</option><option value="SAR ">SAR</option><option value="₹">INR (₹)</option></select></div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="bg-white border border-slate-200 p-6 rounded-xl"><span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Total Balance</span><span id="balance-amount" class="text-3xl font-bold text-slate-900 mt-2 block">$0.00</span></div>
+<div class="bg-white border border-slate-200 p-6 rounded-xl"><span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Total Income</span><span id="income-amount" class="text-3xl font-bold text-emerald-600 mt-2 block">+$0.00</span></div>
+<div class="bg-white border border-slate-200 p-6 rounded-xl"><span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Total Expenses</span><span id="expense-amount" class="text-3xl font-bold text-rose-600 mt-2 block">-$0.00</span></div></div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="bg-white border border-slate-200 p-6 rounded-xl space-y-4 h-fit"><h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">Add a transaction</h2>
+<form id="transaction-form" class="space-y-4">
+<div><label for="tx-title" class="block text-xs font-semibold text-slate-700 uppercase mb-1">Description</label><input type="text" id="tx-title" required maxlength="80" placeholder="e.g. Household grocery" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-emerald-600"></div>
+<div><label for="tx-amount" class="block text-xs font-semibold text-slate-700 uppercase mb-1">Amount</label><input type="number" step="0.01" min="0.01" id="tx-amount" required placeholder="e.g. 1500" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-emerald-600"></div>
+<div><label for="tx-type" class="block text-xs font-semibold text-slate-700 uppercase mb-1">Type</label><select id="tx-type" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-emerald-600"><option value="expense">Expense (-)</option><option value="income">Income (+)</option></select></div>
+<div><label for="tx-category" class="block text-xs font-semibold text-slate-700 uppercase mb-1">Category</label><select id="tx-category" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-emerald-600"><option value="Grocery">Grocery</option><option value="Petrol">Petrol / Fuel</option><option value="Milk">Milk</option><option value="Bills">Bills &amp; Utilities</option><option value="Rent">Rent</option><option value="Transport">Transport</option><option value="Food &amp; Dining">Food &amp; Dining</option><option value="Health">Health</option><option value="Education">Education</option><option value="Shopping">Shopping</option><option value="Salary">Salary</option><option value="Other">Other</option></select></div>
+<button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg text-sm transition">Add transaction</button></form></div>
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-white border border-slate-200 p-6 rounded-xl space-y-3"><h2 class="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3">Expenses by category</h2><div id="category-totals-list" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div></div>
+<div class="bg-white border border-slate-200 p-6 rounded-xl space-y-4"><div class="flex items-center justify-between border-b border-slate-100 pb-3"><h2 class="text-base font-bold text-slate-900">Recent transactions</h2>
+<div class="flex gap-4 text-xs font-semibold"><button id="export-btn" class="text-blue-600 hover:underline">Export CSV</button><button id="clear-btn" class="text-rose-600 hover:underline">Clear all data</button></div></div>
+<ul id="transaction-list" class="space-y-2 max-h-80 overflow-y-auto pr-1"></ul></div></div></div>
+<article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 text-sm text-slate-600 leading-relaxed space-y-3">
+<h2 class="text-xl font-bold text-slate-900">About Nexus Expense</h2>
+<p>Nexus Expense is a simple budget tracker that runs in your web browser. Add each income or expense with a short description, an amount and a category, and the page instantly updates your total balance, total income, total expenses and a breakdown of spending by category. It is built for everyday money: groceries, fuel, bills, rent, transport, health, education and salary.</p>
+<h2 class="text-xl font-bold text-slate-900 pt-3">How to use it</h2>
+<ol class="list-decimal pl-5 space-y-1"><li>Choose your currency symbol above the totals.</li><li>Enter a description and an amount, choose Expense or Income and pick a category.</li><li>Click Add transaction. The totals and category cards update immediately.</li><li>Review your category totals to see where your money goes, and delete entries made by mistake.</li><li>Click Export CSV to save a copy you can open in a spreadsheet.</li></ol>
+<h2 class="text-xl font-bold text-slate-900 pt-3">Where your data is stored</h2>
+<p>Everything you enter is saved in your browser's local storage on your own device. Nexus Expense has no account system and no server database for your entries, so nobody else can see them. The trade-off is that the data lives only in that browser. If you clear your browsing data, use private mode or switch to another device, your entries will not appear there. Export a CSV from time to time as a backup. Read the full <a class="text-blue-600 underline" href="/privacy-policy/">privacy policy</a>.</p>
+<h2 class="text-xl font-bold text-slate-900 pt-3">Learn to budget</h2>
+<ul class="list-disc pl-5 space-y-1"><li><a class="text-blue-600 underline" href="/how-to-track-expenses/">How to track your expenses: a simple step-by-step method</a></li><li><a class="text-blue-600 underline" href="/50-30-20-budget-rule/">The 50/30/20 budget rule explained, with a calculator</a></li></ul>
+<h2 class="text-xl font-bold text-slate-900 pt-3">Frequently asked questions</h2>
+<div><h3 class="font-semibold text-slate-900 mt-3">Is my financial data uploaded anywhere?</h3><p>No. Transactions are saved only in your browser's local storage on your own device. Nexus Expense has no server database for your entries.</p></div><div><h3 class="font-semibold text-slate-900 mt-3">Will I lose my data if I clear my browser?</h3><p>Yes. Clearing site data, using private browsing or switching browsers or devices means your saved entries will not be there. Use the Export CSV button to keep a backup.</p></div><div><h3 class="font-semibold text-slate-900 mt-3">Can I use it on my phone and my computer?</h3><p>The tracker works on both, but each browser keeps its own separate data. Entries do not sync between devices.</p></div><div><h3 class="font-semibold text-slate-900 mt-3">Can I change the currency?</h3><p>Yes. Pick a currency symbol from the menu above the totals. It changes how amounts are displayed and is remembered in your browser.</p></div><div><h3 class="font-semibold text-slate-900 mt-3">Is it really free?</h3><p>Yes. There is no account, subscription or paywall.</p></div>
+<p class="text-xs text-slate-500 pt-3">Nexus Expense is a record-keeping tool and does not give financial advice.</p></article>
+</main>
+<footer class="bg-[#f2f2f2] text-slate-600 text-xs py-8 px-6 border-t border-slate-200"><div class="max-w-7xl mx-auto space-y-3 text-center">
+<nav aria-label="Footer" class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-semibold text-slate-700"><a href="/">Expense Tracker</a><a href="/how-to-track-expenses/">How to Track Expenses</a><a href="/50-30-20-budget-rule/">50/30/20 Rule</a><a href="/about/">About</a><a href="/privacy-policy/">Privacy Policy</a><a href="/contact/">Contact</a><a href="https://calc.nexusglobalit.org/">Calculators</a><a href="https://tools.nexusglobalit.org/">Tools</a></nav>
+<p>&copy; 2026 Nexus Global Information Technology. All rights reserved.</p></div></footer>
+<script>
+const KEY='my_transactions',CKEY='nexus_expense_currency';
+function loadTx(){try{const v=JSON.parse(localStorage.getItem(KEY));return Array.isArray(v)?v:[];}catch(e){return [];}}
+function saveTx(){try{localStorage.setItem(KEY,JSON.stringify(transactions));}catch(e){}}
+let transactions=loadTx();let sym='$';
+try{sym=localStorage.getItem(CKEY)||'$';}catch(e){}
+function money(n){return sym+Math.abs(n).toFixed(2);}
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
+function updateUI(){
+ const list=document.getElementById('transaction-list'),cats=document.getElementById('category-totals-list');
+ list.textContent='';cats.textContent='';let inc=0,exp=0;const byCat={};
+ if(!transactions.length){list.appendChild(el('p','text-xs text-slate-500 text-center py-6','No transactions recorded yet.'));cats.appendChild(el('p','text-xs text-slate-500 col-span-full py-2','No category data available.'));}
+ else{
+  transactions.forEach((tx,i)=>{const a=parseFloat(tx.amount)||0;
+   if(tx.type==='income'){inc+=a;}else{exp+=a;byCat[tx.category]=(byCat[tx.category]||0)+a;}
+   const li=el('li','flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-200 text-sm');
+   const left=el('div','flex items-center space-x-3');left.appendChild(el('span','w-2.5 h-2.5 rounded-full '+(tx.type==='income'?'bg-emerald-500':'bg-rose-500')));
+   const mid=el('div');mid.appendChild(el('p','font-semibold text-slate-800 text-xs sm:text-sm',tx.title));mid.appendChild(el('span','text-[10px] bg-slate-200 text-slate-600 px-2 py-0.5 rounded',tx.category));left.appendChild(mid);
+   const right=el('div','flex items-center space-x-3');right.appendChild(el('span','font-mono font-bold '+(tx.type==='income'?'text-emerald-600':'text-rose-600'),(tx.type==='income'?'+':'-')+money(a)));
+   const del=el('button','text-slate-400 hover:text-rose-600 text-xs transition','Delete');del.setAttribute('aria-label','Delete transaction '+tx.title);del.addEventListener('click',()=>{transactions.splice(i,1);updateUI();});right.appendChild(del);
+   li.appendChild(left);li.appendChild(right);list.appendChild(li);});
+  const keys=Object.keys(byCat);
+  if(!keys.length){cats.appendChild(el('p','text-xs text-slate-500 col-span-full py-2','No expense categories recorded yet.'));}
+  else keys.forEach(c=>{const d=el('div','bg-slate-50 border border-slate-200 p-3 rounded-lg');d.appendChild(el('span','text-[11px] text-slate-500 block font-semibold',c));d.appendChild(el('span','text-base font-bold text-rose-600 mt-0.5 block',money(byCat[c])));cats.appendChild(d);});
+ }
+ const net=inc-exp;document.getElementById('balance-amount').textContent=(net<0?'-':'')+money(net);
+ document.getElementById('income-amount').textContent='+'+money(inc);document.getElementById('expense-amount').textContent='-'+money(exp);saveTx();}
+function addTransaction(e){e.preventDefault();const title=document.getElementById('tx-title').value.trim();const amount=parseFloat(document.getElementById('tx-amount').value);
+ if(!title||!(amount>0))return;transactions.unshift({title,amount:amount.toFixed(2),type:document.getElementById('tx-type').value,category:document.getElementById('tx-category').value});
+ updateUI();document.getElementById('tx-title').value='';document.getElementById('tx-amount').value='';}
+function clearAllData(){if(confirm('Delete all saved transactions? This cannot be undone.')){transactions=[];updateUI();}}
+function csvCell(v){v=String(v);if(/^[=+\-@]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"';}
+function exportCSV(){if(!transactions.length){alert('There are no transactions to export yet.');return;}
+ const rows=[['Title','Amount','Type','Category']].concat(transactions.map(t=>[t.title,t.amount,t.type,t.category]));
+ const blob=new Blob([rows.map(r=>r.map(csvCell).join(',')).join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nexus-expenses.csv';a.click();URL.revokeObjectURL(a.href);}
+const cs=document.getElementById('currency');cs.value=sym;if(cs.value!==sym){cs.value='$';sym='$';}
+cs.addEventListener('change',()=>{sym=cs.value;try{localStorage.setItem(CKEY,sym);}catch(e){}updateUI();});
+document.getElementById('transaction-form').addEventListener('submit',addTransaction);
+document.getElementById('clear-btn').addEventListener('click',clearAllData);document.getElementById('export-btn').addEventListener('click',exportCSV);
+updateUI();
+</script>
+</body></html>

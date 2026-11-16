@@ -2,7 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://expense.nexusglobalit.org/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+  <url>
+    <loc>https://expense.nexusglobalit.org/how-to-track-expenses/</loc>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+  <url>
+    <loc>https://expense.nexusglobalit.org/50-30-20-budget-rule/</loc>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+  <url>
+    <loc>https://expense.nexusglobalit.org/about/</loc>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+  <url>
+    <loc>https://expense.nexusglobalit.org/contact/</loc>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+  <url>
+    <loc>https://expense.nexusglobalit.org/privacy-policy/</loc>
+    <lastmod>2026-11-15</lastmod>
   </url>
 </urlset>
